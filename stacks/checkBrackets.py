@@ -1,22 +1,36 @@
-def checkBrackets(mystr):
-    opening = ['(', '{', '[']
-    matches = [('(',')'), ('[',']'),('{','}')]
-    stack = []
-    for i in mystr:
-        if i in opening:
-            stack.append(i)
-            #print(stack)
+
+def is_match(p1, p2):
+    if p1 == "(" and p2 == ")":
+        return True
+    elif p1 == "{" and p2 == "}":
+        return True
+    elif p1 == "[" and p2 == "]":
+        return True
+    else:
+        return False
+
+def parenBalanced(paren_string):
+    s = []
+    is_balanced = True
+    index = 0
+
+    while index < len(paren_string) and is_balanced:
+        paren = paren_string[index]
+        if paren in "([{":
+            s.append(paren)
         else:
-            top = stack.pop() #take the last item which enters last in stack 
-            if (top,i) not in matches:
-                print("Proper match not found for",top)
+            if len(s)==0:
+                is_balanced = False
             else:
-                print("Proper match found for", top, i)
- 
+                top = s.pop()
+                if not is_match(top, paren):
+                    is_balanced = False
+        index += 1
 
-            
-checkBrackets("{{()})")
+    if 1 and is_balanced:
+        return True
+    else:
+        return False
 
-                
 
-
+print(parenBalanced("({[])"))
