@@ -10,5 +10,20 @@ def revStr(mystr):
     print(total)
     return total
 
-
 revStr("abcde")
+
+#count specific letters in string
+def recursiveCountStr(mystr):
+    letters = "aeuio"
+    if len(mystr)==0:
+        return 0
+
+    newstr = mystr[0].lower()
+    if newstr[0] not in letters:
+        return recursiveCountStr(mystr[1:])
+    else:
+        return 1 + recursiveCountStr(mystr[1:])
+
+
+print(recursiveCountStr("Welcometoeducative"))
+
