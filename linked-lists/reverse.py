@@ -1,54 +1,55 @@
-class Node():
-    def __init__(self,next):
+class Node:
+    def __init__(self, data):
+        self.data = data
         self.next = None
 
-class LinkedList():
+class LinkedList:
     def __init__(self):
         self.head = None
 
-    def insertLast(self,new_data):
-        if self.head is None:
+    def append(self,new_data):
+        new_data = Node(new_data)
+        if self.head == None:
             self.head = new_data
+            return
         else:
-            lastNode = self.head
-            while lastNode.next is not None: #lastnode nexti empty olana kadar
-                if lastNode.next is None:
-                    break
-                else:
-                    lastNode = lastNode.next
-            lastNode.next = new_data #lastnode nexti empty ise, yeni node u lastnode next olarak ekle
+            current = self.head
+            while current.next is not None:
+                current = current.next
+            current.next = new_data
 
     def reverse(self):
-        current = self.head
-        prev = None
-        while current:
-            nextn = current.next
-            current.next = prev
-            prev = current
-            current = nextn
-        self.head=prev
-        print(current)
+        if self.head == None:
+            return "Empyt list"
+        else:
+            prev = None
+            current = self.head
+            while current is not None: #until the end of the list
+                nxt = current.next
+                current.next = prev
+                prev = current
+                current = nxt
+            self.head=prev
 
-    def PrintList(self):
-
-        if self.head is None:
-            print("List is empty")
-        return
-        currentNode = self.head
-        while currentNode is not None:
-            print("x")
-            print(currentNode.data)
-            currentNode = currentNode.next
+    def printList(self):
+        if self.head == None:
+            return "Empyt list"
+        else:
+            current = self.head
+            while current is not None:
+                print(current.data)
+                current = current.next
 
 
 
 mylist = LinkedList()
-a = Node("A")
-b = Node("B")
-c = Node("C")
-
-mylist.insertLast(a)
-mylist.insertLast(b)
-mylist.insertLast(c)
+print("Normal list: ")
+mylist.append("A")
+mylist.append("B")
+mylist.append("C")
+mylist.append("D")
+mylist.printList()
+print("Reversed List:")
 mylist.reverse()
-mylist.PrintList()
+mylist.printList()
+
