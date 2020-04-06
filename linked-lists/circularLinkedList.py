@@ -5,7 +5,7 @@ class Node:
         self.data = data
         self.next = None
 
-class LinkedList:
+class CircularLinkedList:
     def __init__(self):
         self.head = None
 
@@ -46,7 +46,7 @@ class LinkedList:
             self.head = newNode
 
 
-mylist = LinkedList()
+mylist = CircularLinkedList()
 mylist.append(1)
 mylist.append(6)
 mylist.append(4)
