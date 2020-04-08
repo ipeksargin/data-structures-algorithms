@@ -46,6 +46,7 @@ class doubleLinkedList:
         while current:
             if current.next is None and current.data == key: #if there is only one node
                 new_data = Node(new_data)
+                self.append(new_data)
                 break
             elif current.data ==key:
                 new_data = Node(new_data)
@@ -56,6 +57,21 @@ class doubleLinkedList:
                 nxt.prev = new_data
             current = current.next
 
+    def addBefore(self,new_data,key):
+        current = self.head
+        while current:
+            if current.prev is None and current.data == key: #if there is only one node
+                new_data = Node(new_data)
+                self.append(new_data)
+                break
+            elif current.data == key:
+                new_data = Node(new_data)
+                prev = current.prev
+                prev.next = new_data
+                new_data.next = current
+                current.prev = new_data
+                new_data.prev = prev
+            current = current.next
 
 
 
@@ -67,6 +83,7 @@ double.append("D")
 double.append("X")
 double.append("C")
 double.addAfter(11, "A")
+double.addBefore(29, "X")
 
 double.prepend("B")
 double.print_list()
