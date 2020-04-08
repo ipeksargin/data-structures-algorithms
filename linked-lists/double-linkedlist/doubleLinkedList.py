@@ -41,10 +41,32 @@ class doubleLinkedList:
             print(current.data)
             current = current.next
 
+    def addAfter(self, new_data,key):
+        current = self.head
+        while current:
+            if current.next is None and current.data == key: #if there is only one node
+                new_data = Node(new_data)
+                break
+            elif current.data ==key:
+                new_data = Node(new_data)
+                nxt = current.next
+                current.next = new_data
+                new_data.next = nxt
+                new_data.prev = current
+                nxt.prev = new_data
+            current = current.next
+
+
+
+
+
+
 double = doubleLinkedList()
 double.append("A")
 double.append("D")
 double.append("X")
 double.append("C")
+double.addAfter(11, "A")
+
 double.prepend("B")
 double.print_list()
