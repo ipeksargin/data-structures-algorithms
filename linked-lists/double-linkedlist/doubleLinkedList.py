@@ -8,8 +8,11 @@ class doubleLinkedList:
     def __init__(self):
         self.head == None
 
-    def append(self, new_data):
-        pass
+    def append(self, data):
+        if self.head is None:
+            new_node = Node(data)
+            new_node.prev = None
+            self.head = new_node
 
     def prepend(self,new_data): #add to front
         pass
