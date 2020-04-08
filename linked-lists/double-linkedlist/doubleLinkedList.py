@@ -6,16 +6,45 @@ class Node:
 
 class doubleLinkedList:
     def __init__(self):
-        self.head == None
+        self.head = None
 
-    def append(self, data):
-        if self.head is None:
-            new_node = Node(data)
-            new_node.prev = None
-            self.head = new_node
+    def append(self, new_data):
+        if self.head == None:
+            new_data = Node(new_data)
+            self.head = new_data
+            self.head.prev = None
+        else:
+            new_data = Node(new_data)
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_data
+            current.next.prev = current
+            new_data.next = None
 
     def prepend(self,new_data): #add to front
-        pass
+        if self.head == None:
+            new_data = Node(new_data)
+            self.head = new_data
+            self.head.prev = None
+        else:
+            current = self.head
+            new_data = Node(new_data)
+            current.prev = new_data
+            new_data.next = self.head
+            self.head = new_data
+            new_data.prev = None
 
     def print_list(self):
-        pass
+        current = self.head
+        while current:
+            print(current.data)
+            current = current.next
+
+double = doubleLinkedList()
+double.append("A")
+double.append("D")
+double.append("X")
+double.append("C")
+double.prepend("B")
+double.print_list()
