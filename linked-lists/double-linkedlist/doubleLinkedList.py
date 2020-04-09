@@ -73,17 +73,64 @@ class doubleLinkedList:
                 new_data.prev = prev
             current = current.next
 
+    def deleteNode(self, item):
+        current = self.head
+        while current:
+            #if it has only one item
+            if current.data == item and current == self.head:
+                if current.next is None:
+                    current = None
+                    self.head = None
+                    return
 
+            #delete the head Node
+                else:
+                    nxt = current.next
+                    nxt.prev = None
+                    current.next = None
+                    current = None
+                    self.head = nxt
+                    return
+            #delete a node which isn't the last one
+            elif current.data == item:
+                if current.next is not None:
+                    prev = current.prev
+                    nxt = current.next
+                    prev.next = nxt
+                    nxt.prev = prev
+                    current.next = None
+                    current.prev = None
+                    current = None
+                    return
+                else:
+                    prev = current.prev
+                    prev.next = None
+                    cur.prev = None
+                    current = None
+                    return
+            current = current.next
+
+    def reverse(self):
+        temp = None
+        current = self.head
+        while current:
+            temp = current.prev
+            current.prev = current.next
+            current.next = temp
+            current = current.prev
+        if temp:
+            self.head = temp.prev
 
 
 
 double = doubleLinkedList()
 double.append("A")
 double.append("D")
-double.append("X")
-double.append("C")
-double.addAfter(11, "A")
-double.addBefore(29, "X")
-
 double.prepend("B")
+double.append("C")
+double.append("X")
+double.addAfter(11,"C")
+double.addBefore(12,"C")
+double.deleteNode("B")
+double.reverse()
 double.print_list()
