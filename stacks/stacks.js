@@ -46,4 +46,36 @@ class Node{
   console.log(mystack.push("pocket"));
   console.log(mystack.pop());
   
+//array implementation 
+class Node{
+    constructor(value){
+      this.value = value;
+    }
   
+  }
+  class Stack{
+    constructor(){
+      this.array = [];
+    }
+    push(newitem){
+      this.array.push(newitem);
+      return this;
+    }
+  
+    pop(){
+      if(this.array.length ==0){
+        console.log("Stack has no item")
+      }else{
+        this.array.pop()
+        return this;
+      }
+    }
+  
+  }
+  
+  const mystack = new Stack();
+  console.log(mystack.push("google"));
+  console.log(mystack.push("youtube"));
+  console.log(mystack.push("twitter"));
+  console.log(mystack.push(5));
+  console.log(mystack.pop());
